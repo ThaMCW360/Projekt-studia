@@ -1,0 +1,17 @@
+  <h1>Profil</h1>
+<!-- <li >{{users[0].firstName}}</li> -->
+Nazwa użytkownika: {{users[0].login}}
+
+<div>
+	<p>zdjęcie profilowe:</p>
+<input
+  style="display: none"
+  type="file" (change)="onFileChanged($event)"
+  #fileInput>
+<button (click)="fileInput.click()">wybierz nowe</button>
+</div>
+<!-- <button (click)="onUploadImage($event)">Upload!</button> -->
+
+<div>
+<img  [src]="img_src" class="img" id="img" />
+</div>

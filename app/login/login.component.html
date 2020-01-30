@@ -1,0 +1,28 @@
+<h1 style="text-align: center;">
+Logowanie
+</h1>
+
+
+
+	
+
+<form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+	<div style="width: 100%; display: inline-block; text-align: center;">
+		<div style="width: 33%; display: inline-block; text-align: right;">Login</div>
+  <div style="width: 33%; display: inline-block; text-align: center;">
+  		<p><input type="text" [(ngModel)]="login.login" name="first" style="background: black;
+    border-radius: 10px;
+    height: 1.5rem;
+    color: white;" /></p>
+	</div>  <div style="width: 33%; display: inline-block;"></div><div style="width: 33%; display: inline-block; text-align: right;">Hasło</div>
+	<div style="width: 33%; display: inline-block; text-align: center;">
+		<p><input type="password" [(ngModel)]="login.passwd" name="passwd" style="background: black;
+    border-radius: 10px;
+    height: 1.5rem;
+    color: white;" /></p>
+	</div><div style="width: 33%; display: inline-block;"></div>
+  	<div style="width: 33%; display: inline-block; text-align: center;">
+  		<p><button type="submit">Zaloguj</button></p>
+  	</div>
+  </div>
+</form>
