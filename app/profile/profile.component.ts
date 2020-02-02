@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
 import { FormGroup, FormControl } from '@angular/forms';
-// import { HttpClientModule }    from '@angular/common/http';
+
 import { RouterOutlet, Router } from '@angular/router';
 import {Observable} from 'rxjs/Rx';
 import {User} from '../user';
@@ -50,9 +50,7 @@ dataURItoBlob(dataURI) {
 
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
-    // this.qwe = 
-
-        // if (event.target.files.length > 0) {
+   
       const fileReader = new FileReader();
       let imageToUpload =  this.selectedFile;
       this.itb = this.imageToBase64(fileReader, imageToUpload)
@@ -96,18 +94,14 @@ this.img_src = base64image;
     localStorage.setItem('gender', form.value.gender);
     this.user.gender = localStorage.getItem('gender');
 
-  console.log(form.value.login)
 };
 
 
 ngOnInit(): void{
-	// localStorage.setItem('dataSource', "1");
-	 // this.img_src = localStorage.getItem('image');
-	// this.getPersons();
+
 	this.getUsers();
 if(localStorage.getItem('logged')=="1"){
   this.logged = 1;
-// this.router.navigateByUrl("/#/profile");
 } else {
   this.logged = 0;
   this.router.navigateByUrl("/login");
@@ -115,7 +109,7 @@ if(localStorage.getItem('logged')=="1"){
 
 
 if(!localStorage.getItem('image')){
-console.log("nie ma obrazka");
+
 this.img_src = "./no-image.png";
 
 }

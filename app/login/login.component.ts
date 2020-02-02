@@ -9,8 +9,7 @@ import {User} from '../user';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  // selector: 'app-hero-list',
-  // providers: [LoginService]
+
 })
 export class LoginComponent implements OnInit {
 
@@ -29,7 +28,7 @@ error;
 
 	getUsers(login, passwd) : void{
 		var user = this.loginService.getUsers()[0];
-		// console.log(qw);
+
 		if(user.login.toLowerCase()==login.toLowerCase() && user.passwd == passwd){
 			console.log(":)");
 			localStorage.setItem('logged', '1');
@@ -37,18 +36,14 @@ error;
       this.router.navigateByUrl("/profile");
 		} else {
       this.error = "Błędne dane, spróbuj ponownie";
-			// console.log(":(");
 		}
 	}
 
   	onSubmit() {
-    	// console.log(login.name);
     	this.getUsers(this.login.login, this.login.passwd);
   	}
 
   	ngOnInit() {
-		// console.log(this.q);
-  		// var login = {name: "qwe"};
 if(localStorage.getItem('logged')=="1"){
   this.logged = 1;
 } else {
@@ -61,7 +56,7 @@ if(localStorage.getItem('logged')=="1"){
   			
 			this.router.navigateByUrl("/profile");
   		}
-  	console.log(localStorage.getItem('logged'));
+  	
 
   	}
 
