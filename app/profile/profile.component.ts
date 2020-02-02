@@ -25,8 +25,7 @@ users : User[];
 
   user = {city: '',
           login: '',
-          mail: '',
-          gender: ''};
+          mail: ''};
 
 getUsers() : void{
 this.users = this.loginService.getUsers();
@@ -91,8 +90,6 @@ this.img_src = base64image;
     this.user.mail = localStorage.getItem('mail');
     localStorage.setItem('city', form.value.city);
     this.user.city = localStorage.getItem('city');
-    localStorage.setItem('gender', form.value.gender);
-    this.user.gender = localStorage.getItem('gender');
 
 };
 
@@ -127,13 +124,7 @@ if(!localStorage.getItem('city')){
 
   this.user.city = localStorage.getItem('city');
 }
-if(!localStorage.getItem('gender')){
-    this.user.gender = this.users[0].gender;
-    localStorage.setItem('gender', this.user.gender);
-} else {
-  
-  this.user.gender = localStorage.getItem('gender');
-}
+
 if(!localStorage.getItem('mail')){
     this.user.mail = this.users[0].mail;
     localStorage.setItem('mail', this.user.mail);
@@ -147,7 +138,7 @@ if(!localStorage.getItem('mail')){
 
  this.modelForm = new FormGroup({
    login: new FormControl(this.user.login),
-   gender: new FormControl(this.user.gender),
+
    city: new FormControl(this.user.city),
    mail: new FormControl(this.user.mail),
  });
