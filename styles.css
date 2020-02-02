@@ -4,3 +4,22 @@ body {
 	color: white;
 }
 
+a:link {
+  color: lightblue !important;
+}
+
+/* visited link */
+a:visited {
+  color: lightblue !important;
+}
+
+/* mouse over link */
+a:hover {
+  color: lightblue !important;
+}
+
+/* selected link */
+a:active {
+  color: lightblue !important;
+}
+

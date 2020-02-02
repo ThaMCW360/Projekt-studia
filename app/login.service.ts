@@ -17,7 +17,10 @@ export class LoginService {
   users:Array<User> = [{
     id: 1,
     login: 'admin',
-    passwd: 'admin'
+    passwd: 'admin',
+    city: 'Koszalin',
+    mail: 'test@wp.pl',
+    gender: '1'
   }];
 
 

@@ -1,0 +1,42 @@
+<a href="/#/profile">Profil</a>
+
+<h1 style="text-align: center;">
+  Lista rzeczy do zrobienia
+
+</h1>
+
+<ul>
+  <li *ngFor="let toDoThing2 of toDoList; let j = index"><h3>Nazwa: {{toDoList[j].name}} - Opis: {{toDoList[j].desc}} - czy zrobione?: <span>{{ toDoList[j].status ? "Tak" : "Nie"}}</span></h3></li>
+</ul>
+<!-- <table style="width:100%; border: 1px solid black;">
+  <tr>
+    <th>Nazwa</th>
+    <th>Opis</th>
+    <th>Czy zrobione?</th>
+  </tr>
+  <tr *ngFor="let toDoThing2 of toDoList; let j = index">
+    <td>{{toDoList[j].name}}</td>
+    <td>{{toDoList[j].desc}}</td>
+    <td>{{toDoList[j].status}}</td>
+  </tr>
+
+</table> -->
+
+
+<form #tdForm="ngForm" (ngSubmit)="submit(tdForm)">
+	
+		<fieldset ngModelGroup="data{{j}}" *ngFor="let toDoThing2 of toDoList; let j = index">
+			<div>
+		 <label>Nazwa:</label><input name="name" [ngModel]="toDoList[j].name">
+		 <label>Opis:</label><input name="desc" [ngModel]="toDoList[j].desc" style="width: 50%">
+		 <label>Czy zrobione?:</label><input name="status" type="checkbox" [ngModel]="toDoList[j].status">
+		 <button (click)="deleteClick(j)">Usuń</button>
+	</div> 
+</fieldset>
+
+		 <p style="text-align: center;"><button (click)="addClick()">Dodaj nowe</button></p>
+
+
+ <p style="text-align: center;"><button type="submit">Zapisz</button></p>
+</form>
+

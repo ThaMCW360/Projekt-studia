@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
+import { FormGroup, FormControl } from '@angular/forms';
 // import { HttpClientModule }    from '@angular/common/http';
 import { RouterOutlet, Router } from '@angular/router';
 import {Observable} from 'rxjs/Rx';
@@ -20,10 +21,17 @@ users : User[];
   fl = 0;
   itb;
   logged;
+  modelForm;
+
+  user = {city: '',
+          login: '',
+          mail: '',
+          gender: ''};
 
 getUsers() : void{
 this.users = this.loginService.getUsers();
 }
+
 
 
 dataURItoBlob(dataURI) {
@@ -77,6 +85,20 @@ this.img_src = base64image;
     return fromEvent(fileReader, 'load').pipe(pluck('currentTarget', 'result'));
   }
 
+  onSubmit(form) : void {
+
+    localStorage.setItem('login', form.value.login);
+    this.user.login = localStorage.getItem('login');
+    localStorage.setItem('mail', form.value.mail);
+    this.user.mail = localStorage.getItem('mail');
+    localStorage.setItem('city', form.value.city);
+    this.user.city = localStorage.getItem('city');
+    localStorage.setItem('gender', form.value.gender);
+    this.user.gender = localStorage.getItem('gender');
+
+  console.log(form.value.login)
+};
+
 
 ngOnInit(): void{
 	// localStorage.setItem('dataSource', "1");
@@ -85,10 +107,60 @@ ngOnInit(): void{
 	this.getUsers();
 if(localStorage.getItem('logged')=="1"){
   this.logged = 1;
+// this.router.navigateByUrl("/#/profile");
 } else {
   this.logged = 0;
+  this.router.navigateByUrl("/login");
 }
 
+
+if(!localStorage.getItem('image')){
+console.log("nie ma obrazka");
+this.img_src = "./no-image.png";
+
 }
+
+if(!localStorage.getItem('login')){
+    this.user.login = this.users[0].login;
+    localStorage.setItem('login', this.user.login);
+} else {
+  this.user.login = localStorage.getItem('login');
+}
+if(!localStorage.getItem('city')){
+    this.user.city = this.users[0].city;
+    localStorage.setItem('city', this.user.city);
+} else {
+
+  this.user.city = localStorage.getItem('city');
+}
+if(!localStorage.getItem('gender')){
+    this.user.gender = this.users[0].gender;
+    localStorage.setItem('gender', this.user.gender);
+} else {
+  
+  this.user.gender = localStorage.getItem('gender');
+}
+if(!localStorage.getItem('mail')){
+    this.user.mail = this.users[0].mail;
+    localStorage.setItem('mail', this.user.mail);
+} else {
+  
+  this.user.mail = localStorage.getItem('mail');
+}
+
+
+
+
+ this.modelForm = new FormGroup({
+   login: new FormControl(this.user.login),
+   gender: new FormControl(this.user.gender),
+   city: new FormControl(this.user.city),
+   mail: new FormControl(this.user.mail),
+ });
+
+
+
+}
+
 }
 

@@ -1,17 +1,33 @@
+  <div style="width: 100%; display: inline-block; text-align: center;">
   <h1>Profil</h1>
+  <a href="/#/todo">Lista rzeczy do zrobienia</a>
 <!-- <li >{{users[0].firstName}}</li> -->
-Nazwa użytkownika: {{users[0].login}}
-
+<p>Nazwa użytkownika: {{user.login}}</p>
+<p>Mail: {{user.mail}}</p>
+<p>Miejscowość: {{user.city}}</p>
+<p>Płeć: {{user.gender}}</p>
 <div>
 	<p>zdjęcie profilowe:</p>
 <input
   style="display: none"
   type="file" (change)="onFileChanged($event)"
   #fileInput>
-<button (click)="fileInput.click()">wybierz nowe</button>
+
 </div>
 <!-- <button (click)="onUploadImage($event)">Upload!</button> -->
 
 <div>
 <img  [src]="img_src" class="img" id="img" />
 </div>
+<div><p></p></div>
+<div><button (click)="fileInput.click()">wybierz nowe</button></div>
+</div>
+
+<form [formGroup]="modelForm" (ngSubmit)="onSubmit(modelForm)">
+ <label>Login:</label><input name="login" formControlName="login">
+ <label>City:</label><input name="city" formControlName="city">
+ <label>Mail:</label><input type="mail" name="mail" formControlName="mail">
+ <label>Płeć:</label><input name="gender" formControlName="gender">
+ 
+ <button type="submit">Send</button>
+</form>

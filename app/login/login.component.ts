@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 	login = {login:"",
 			passwd:""};
 logged;
+error;
 
 
     constructor(private loginService: LoginService, private router:Router) {
@@ -29,13 +30,14 @@ logged;
 	getUsers(login, passwd) : void{
 		var user = this.loginService.getUsers()[0];
 		// console.log(qw);
-		if(user.login==login && user.passwd == passwd){
+		if(user.login.toLowerCase()==login.toLowerCase() && user.passwd == passwd){
 			console.log(":)");
 			localStorage.setItem('logged', '1');
       this.logged = 1;
       this.router.navigateByUrl("/profile");
 		} else {
-			console.log(":(");
+      this.error = "Błędne dane, spróbuj ponownie";
+			// console.log(":(");
 		}
 	}
 
